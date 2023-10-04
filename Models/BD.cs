@@ -23,7 +23,7 @@ public class BD{
     
         Entidad ent = new Entidad();
         ent=null;
-        string sql = "SELECT * FROM Usuario WHERE Username=@pUsername"; // ESTA LINEA ESTÁ MAL
+        string sql = "SELECT * FROM Usuario WHERE Username=@pUsername"; 
         using(SqlConnection db = new SqlConnection(_connectionString)){
            ent = db.QueryFirstOrDefault<Entidad>(sql, new {pUsername=_username});
         }

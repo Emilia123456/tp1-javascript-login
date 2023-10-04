@@ -31,22 +31,16 @@ public class Account : Controller
     [HttpPost]
     public IActionResult VerificarRegistro( string _username, string _contra, string _repe, string _nombre, string _gmail, int _tel, int _id)
     {
-        //El List y foreach lo tienen que reemplazar por uscar en base de datos con el username y devolver si existe o no
-        List<Entidad> _listaUsuarios=new List<Entidad>();
-        _listaUsuarios=BD.ObtenerUsuarios();
-        ViewBag.listaUsuarios=_listaUsuarios;
         string TXT;
-
-        
-        foreach (Entidad unUsr in _listaUsuarios)
-        {
-            if (unUsr.Username != _username)
+        Entidad entidad = BD.ObtenerPorNombre(_username);
+            if (entidad == null)
             {
+                Console.WriteLine("pipi");
                 if (_contra==_repe)
                 {
-                  BD.AgregarUsuarios(new Entidad(_username, _contra, _nombre, _gmail, _tel, _id));
-                 TXT="Registro exitoso";
-                 ViewBag.txt=TXT;
+                    BD.AgregarUsuarios(new Entidad(_username, _contra, _nombre, _gmail, _tel, _id));
+                    TXT="Registro exitoso";
+                    ViewBag.txt=TXT;
                 }else{
                     TXT="Registro no exitoso. Repita la contraseña correctamente";
                     ViewBag.txt=TXT;
@@ -57,10 +51,8 @@ public class Account : Controller
                 TXT="Registro no exitoso. El usuario ya existe, intentelo de nuevo";
                 ViewBag.txt=TXT;
             }    
-        }
         
         return View ("Respuesta");
-        
     }
 
 
