@@ -19,7 +19,16 @@ public class BD{
             db.Execute(SQL, new {pUsername = ing.Username, pContrasenia= ing.Contrasenia, pNombre= ing.Nombre, pMail= ing.Mail, pTelefono= ing.Telefono});
         }
     }
-
+    public static Entidad ObtenerPorNombre(string _username){ //traemos el objeto 
+    
+        Entidad ent = new Entidad();
+        ent=null;
+        string sql = "SELECT * FROM Usuario WHERE Username=@_username"; // ESTA LINEA ESTÁ MAL
+        using(SqlConnection db = new SqlConnection(_connectionString)){
+           ent = db.QueryFirstOrDefault<Entidad>(sql, new {Username=_username});
+        }
+        return ent;
+    }
     
 
 

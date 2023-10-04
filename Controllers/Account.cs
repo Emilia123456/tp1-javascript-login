@@ -36,31 +36,26 @@ public class Account : Controller
         _listaUsuarios=BD.ObtenerUsuarios();
         ViewBag.listaUsuarios=_listaUsuarios;
         string TXT;
-        Console.WriteLine("pupu");
+
         
         foreach (Entidad unUsr in _listaUsuarios)
         {
-            Console.WriteLine("pupu");
             if (unUsr.Username != _username)
             {
-                Console.WriteLine("pipi");
                 if (_contra==_repe)
                 {
                   BD.AgregarUsuarios(new Entidad(_username, _contra, _nombre, _gmail, _tel, _id));
                  TXT="Registro exitoso";
                  ViewBag.txt=TXT;
-                 Console.WriteLine("pepe");
                 }else{
                     TXT="Registro no exitoso. Repita la contraseña correctamente";
                     ViewBag.txt=TXT;
-                     Console.WriteLine("juan");
                 }    
             } 
             else
             {
                 TXT="Registro no exitoso. El usuario ya existe, intentelo de nuevo";
                 ViewBag.txt=TXT;
-                 Console.WriteLine("popo");
             }    
         }
         
@@ -106,6 +101,16 @@ public class Account : Controller
         List<Entidad> _listaUsuarios=new List<Entidad>();
         _listaUsuarios=BD.ObtenerUsuarios();
         ViewBag.listaUsuarios=_listaUsuarios;
+       return View();
+    }
+
+    public IActionResult Olvide(string _username){
+        Entidad ent = BD.ObtenerPorNombre(_username);
+        ViewBag.contra=ent.Contrasenia;
+       return View();
+    }
+
+    public IActionResult Contrasenia(){
        return View();
     }
     

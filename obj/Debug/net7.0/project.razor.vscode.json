@@ -24085,6 +24085,11 @@
       "FilePath": "c:\\Users\\47697893\\tp1-javascript-login\\Views\\Account\\Respuesta.cshtml",
       "TargetPath": "Views\\Account\\Respuesta.cshtml",
       "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\47697893\\tp1-javascript-login\\Views\\Account\\Contrasenia.cshtml",
+      "TargetPath": "Views\\Account\\Contrasenia.cshtml",
+      "FileKind": "mvc"
     }
   ]
 }
