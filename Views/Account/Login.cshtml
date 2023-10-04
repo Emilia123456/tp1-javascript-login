@@ -1,8 +1,20 @@
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Iniciar sesión";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Iniciar sesión</h1>
 </div>
+    <form action='@Url.Action("VerificarInicio")' method="post">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Username</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username" name="_username">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Contraseña</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Password" name="_contra">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a href='@Url.Action("Olvide","Account")'>¿Olvidaste tu contraseña?</a>
+        <a href='@Url.Action("Registro","Account")'>¿Sos nuevo? ¡Registrate!</a>
+</form>

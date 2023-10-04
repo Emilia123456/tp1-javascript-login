@@ -1,0 +1,17 @@
+
+<h1>@ViewBag.txt</h1>
+<h4>
+    @{
+        if (@ViewBag.txt=="Registro exitoso"){
+            <a href='@Url.Action("Login","Account")'>Iniciar sesión</a>
+        }
+        else if(@ViewBag.txt=="Contraseña incorrecta"){
+            <a href='@Url.Action("Login","Account")'>Intentar de nuevo</a>
+            <a href='@Url.Action("Olvide","Account")'>¿Olvidaste tu contraseña?</a>
+        }
+        else{
+            <a href='@Url.Action("Registro","Account")'>Intentar de nuevo</a>
+        }
+    }
+    
+</h4>

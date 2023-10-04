@@ -29,51 +29,87 @@ public class Account : Controller
 
     // EN REGISTRO verifica si el usuario ya existe y verifica si la contraseña cumple con todos los requerimientos
     [HttpPost]
-    public IActionResult VerificarRegistro( string _username, string _contra, string _repe, string _nombre, string _gmail, int _tel)
+    public IActionResult VerificarRegistro( string _username, string _contra, string _repe, string _nombre, string _gmail, int _tel, int _id)
     {
+        //El List y foreach lo tienen que reemplazar por uscar en base de datos con el username y devolver si existe o no
         List<Entidad> _listaUsuarios=new List<Entidad>();
         _listaUsuarios=BD.ObtenerUsuarios();
-        bool ok = false;
+        ViewBag.listaUsuarios=_listaUsuarios;
+        string TXT;
+        Console.WriteLine("pupu");
         
         foreach (Entidad unUsr in _listaUsuarios)
         {
+            Console.WriteLine("pupu");
             if (unUsr.Username != _username)
             {
+                Console.WriteLine("pipi");
                 if (_contra==_repe)
                 {
-                    ok = true;
-                    return View("RegistroExitosos");
-                }
+                  BD.AgregarUsuarios(new Entidad(_username, _contra, _nombre, _gmail, _tel, _id));
+                 TXT="Registro exitoso";
+                 ViewBag.txt=TXT;
+                 Console.WriteLine("pepe");
+                }else{
+                    TXT="Registro no exitoso. Repita la contraseña correctamente";
+                    ViewBag.txt=TXT;
+                     Console.WriteLine("juan");
+                }    
             } 
             else
             {
-                return View ("RegistroNoExitoso");
+                TXT="Registro no exitoso. El usuario ya existe, intentelo de nuevo";
+                ViewBag.txt=TXT;
+                 Console.WriteLine("popo");
             }    
         }
-        return ok;
+        
+        return View ("Respuesta");
+        
     }
 
 
-    public IActionResult VerificarIngresos (string _username, string _contra) // EN LOGIN verifica que el usuario exista y que la contraseña sea correcta
+    public IActionResult VerificarInicio(string _username, string _contra) // EN LOGIN verifica que el usuario exista y que la contraseña sea correcta
     {
         List<Entidad> _listaUsuarios=new List<Entidad>();
         _listaUsuarios=BD.ObtenerUsuarios();
-        bool ok;
+        string TXT;
         foreach (Entidad unUsr in _listaUsuarios)
         {
             if (unUsr.Username == _username)
             {
                 if (unUsr.Contrasenia==_contra)
                 {
-                    ok = true;
+
                     return View("Bienvenida");
                 }    
-            }      
+                else{
+                    TXT="Contraseña incorrecta";
+                    ViewBag.txt=TXT;
+                    return View("Respuesta");
+                }
+            }  
         }
+        ViewBag.listaUsuarios=_listaUsuarios;
+        return View();
     }
+
+    public IActionResult Respuesta(){
+       return View();
+    }
+
+    public IActionResult Login(){
+       return View();
+    }
+
+    public IActionResult Bienvenida(){
+        List<Entidad> _listaUsuarios=new List<Entidad>();
+        _listaUsuarios=BD.ObtenerUsuarios();
+        ViewBag.listaUsuarios=_listaUsuarios;
+       return View();
+    }
+    
 }
-
-
 
 
 

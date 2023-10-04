@@ -12,6 +12,15 @@ public class BD{
         }
     }
 
+    public static void AgregarUsuarios(Entidad ing){
+        string SQL = "INSERT INTO  Usuario (Username, Contrasenia, Nombre, Mail, Telefono) VALUES (@pUsername, @pContrasenia, @pNombre, @pMail, @pTelefono)";
+        using(SqlConnection db = new SqlConnection(_connectionString))
+        {
+            db.Execute(SQL, new {pUsername = ing.Username, pContrasenia= ing.Contrasenia, pNombre= ing.Nombre, pMail= ing.Mail, pTelefono= ing.Telefono});
+        }
+    }
+
+    
 
 
 }
