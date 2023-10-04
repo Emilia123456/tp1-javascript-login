@@ -1,13 +1,14 @@
 @{
-    ViewData["Title"] = "Bienvenido tontis";
+    ViewData["Title"] = "Bienvenido";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Bienvenido</h1>
-     @{
-        foreach (Entidad usuario in @ViewBag.listaUsuarios ){ 
-            <p> @usuario.Nombre </p>
-            <p> @usuario.Telefono </p>
-        }
-    }
+    <h3 class="display-4">Bienvenido</h3>
 </div>
+    @{
+        <p>Username: @ViewBag.Usuario.Username </p>
+        <p>Nombre: @ViewBag.Usuario.Nombre </p>
+        <p>Mail: @ViewBag.Usuario.Mail </p>
+        <p>Telefono: @ViewBag.Usuario.Telefono </p>
+        
+    }

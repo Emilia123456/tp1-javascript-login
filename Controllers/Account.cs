@@ -75,7 +75,7 @@ public class Account : Controller
             {
                 if (unUsr.Contrasenia==_contra)
                 {
-
+                    ViewBag.Usuario=unUsr;
                     return View("Bienvenida");
                 }    
                 else{
@@ -99,18 +99,19 @@ public class Account : Controller
 
     public IActionResult Bienvenida(){
         List<Entidad> _listaUsuarios=new List<Entidad>();
-        _listaUsuarios=BD.ObtenerUsuarios();
-        ViewBag.listaUsuarios=_listaUsuarios;
+        ViewBag._listaUsuarios=BD.ObtenerUsuarios();
+       
        return View();
     }
 
-    public IActionResult Olvide(string _username){
+    public IActionResult Olvide(){
+        
+       return View();
+    }
+
+    public IActionResult Contrasenia(string _username){
         Entidad ent = BD.ObtenerPorNombre(_username);
         ViewBag.contra=ent.Contrasenia;
-       return View();
-    }
-
-    public IActionResult Contrasenia(){
        return View();
     }
     

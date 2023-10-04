@@ -1,18 +1,16 @@
 @{
-    ViewData["Title"] = "Olvidaste tu contraseña pelotudo";
+    ViewData["Title"] = "Olvidaste tu contraseña";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-
-    <form action='@Url.Action("OlvideMiContra")' method="post">
+    <h3 class="display-4">Olvidaste tu contraseña</h3>
+    <p>Ingresá tu usuario para recuperarla</p>
+</div>
+<form action='@Url.Action("Contrasenia")' method="post">
         <div class="form-group">
             <label for="exampleInputEmail1">Username</label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username" name="_username">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button> 
     </form>
-
-
-</div>
 
