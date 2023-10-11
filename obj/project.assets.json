@@ -508,11 +508,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\47697893\\tp1-javascript-login\\tp1-javascript-login.csproj",
+      "projectUniqueName": "C:\\Users\\47697893\\Downloads\\tp1-javascript-login\\tp1-javascript-login.csproj",
       "projectName": "tp1-javascript-login",
-      "projectPath": "C:\\Users\\47697893\\tp1-javascript-login\\tp1-javascript-login.csproj",
+      "projectPath": "C:\\Users\\47697893\\Downloads\\tp1-javascript-login\\tp1-javascript-login.csproj",
       "packagesPath": "C:\\Users\\47697893\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\47697893\\tp1-javascript-login\\obj\\",
+      "outputPath": "C:\\Users\\47697893\\Downloads\\tp1-javascript-login\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
